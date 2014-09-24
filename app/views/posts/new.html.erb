@@ -1,0 +1,14 @@
+<% provide(:title, 'New post') %>
+<h1>Please make a new post.</h1>
+<div>
+	<%= form_for @post do |f| %>
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+		<br>
+		<%= f.label :text %>
+		<br>
+		<%= f.text_area :text %>
+		<br>
+		<%= f.submit "Post" %>
+	<% end %>
+</div>

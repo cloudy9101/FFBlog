@@ -1,0 +1,8 @@
+<% provide(:title, @user.name) %>
+<h1><%= @user.name %></h1>
+<h3><%= @user.email %></h3>
+<% if @user.posts.any? %>
+	<% @user.posts.each do |post| %>
+		<li><%= link_to post.title, post_path(post) %></li>
+	<% end %>
+<% end %>
