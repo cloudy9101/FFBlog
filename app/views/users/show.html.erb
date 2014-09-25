@@ -6,3 +6,11 @@
 		<li><%= link_to post.title, post_path(post) %></li>
 	<% end %>
 <% end %>
+
+<% if signed_in? %>
+	<p>Signed In OK</p>
+<%  else %>
+	<p>Not Signed In</p>
+<% end %>
+
+<%= link_to 'Sign out', signout_path, method: "delete" %>

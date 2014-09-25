@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 	def create
 		user = User.new(permit_params)
 		user.save
+		sign_in user
 		redirect_to user_url(user)
 	end
 
