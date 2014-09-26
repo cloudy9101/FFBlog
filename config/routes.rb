@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'sessions/new'
 
   get 'sessions/create'
@@ -7,11 +8,15 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:create, :destroy]
+  end
 
   resources :users
 
   resources :sessions, only: [:new, :create, :destroy]
+
+  
 
   match '/signin', to: 'sessions#new', via: 'get'
 

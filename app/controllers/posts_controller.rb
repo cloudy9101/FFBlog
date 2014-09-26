@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		@post = Post.new(permit_params)
+		@post = current_user.posts.build(permit_params)
 		@post.save
 		redirect_to @post
 	end

@@ -2,3 +2,22 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.text %></p>
 <p><%= @post.user.name %></p>
+<h3>Comments</h3>
+<% if @post.comments.any? %>
+	<% @post.comments.each do |comment| %>
+		<li><%= comment.content %> | <%= comment.name %></li>
+	<% end %>
+<% end %>
+<br>
+<%= form_for :comments, url: post_comments_path(@post.id) do |f| %>
+	<%= f.text_area :content %>
+	<br>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<br>
+	<%= f.label :email %>
+	<%= f.text_field :email %>
+	<br>
+
+	<%= f.submit 'Commit' %>
+<% end %>
