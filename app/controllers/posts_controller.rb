@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	before_action :require_login , only: [:create, :destroy]
 	def index
 		@posts = Post.all
 	end
@@ -13,8 +14,11 @@ class PostsController < ApplicationController
 
 	def create
 		@post = current_user.posts.build(permit_params)
-		@post.save
-		redirect_to @post
+		if @post.save
+			redirect_to @post
+		else
+			render 'new'
+		end
 	end
 
 	def destroy
@@ -25,5 +29,12 @@ class PostsController < ApplicationController
 	private
 		def permit_params
 			params.require(:post).permit(:title, :text)
+		end
+
+		def require_login
+			unless signed_in?
+				flash[:error] = "You must be logged in."
+				redirect_to signin_path
+			end
 		end
 end

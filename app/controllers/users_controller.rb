@@ -13,10 +13,13 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		user = User.new(permit_params)
-		user.save
-		sign_in user
-		redirect_to user_url(user)
+		@user = User.new(permit_params)
+		if @user.save
+			sign_in @user
+			redirect_to user_url(@user)
+		else
+			render 'new'
+		end
 	end
 
 	def destroy
