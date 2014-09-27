@@ -9,7 +9,11 @@ class UsersController < ApplicationController
 	end
 
 	def new
-		@user = User.new
+		if signed_in?
+			render 'show'
+		else
+			@user = User.new
+		end
 	end
 
 	def create
