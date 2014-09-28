@@ -1,5 +1,18 @@
 <% provide(:title, 'Home') %>
 
-<h1>StaticPages#home</h1>
-
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="row">
+	<div class="col-md-8">
+		<div class="jumbotron">
+			<h1>欢迎来到FFBLOG！</h1>
+			<p>这是一个基于RubyOnRails技术的博客系统。属于我个人的一次练习，非常简陋，敬请包涵。</p>
+			<p><%= link_to '注册新用户',  signup_path, class: "btn btn-primary btn-lg" %></p>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="jumbotron center">
+			<h3>已有账户？</h3>
+			<br>
+			<p><%= link_to '登陆', signin_path, class: "btn btn-primary btn-lg" %></p>
+		</div>
+	</div>
+</div>

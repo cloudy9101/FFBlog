@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
 	def new
 		if signed_in?
+			@user = current_user
 			render 'show'
 		else
 			@user = User.new
