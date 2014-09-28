@@ -10,8 +10,8 @@
 		<ul class="nav navbar-nav navbar-right">
 			<% if signed_in? %>
 				<li><%= link_to "撰写新文章", new_post_path %></li>
-				<li><%= link_to "账户", user_path(current_user) %></li>
-				<li><%= link_to "设置", '#' %></li>
+				<li><%= link_to "用户", user_path(current_user) %></li>
+				<li><%= link_to "设置", setting_path %></li>
 				<li><%= link_to "登出", signout_path, method: :delete %></li>
 			<% else %>
 				<li><%= link_to "登陆", signin_path %></li>
