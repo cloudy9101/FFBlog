@@ -3,6 +3,13 @@
 	<div class="col-md-8 col-md-offset-2">
 		<h1>发布新文章</h1>
 		<%= form_for @post, html: { class: "form-horizontal", role: "form" } do |f| %>
+			<% if @post.errors.any? %>
+				<ul class="list-group">
+				<% @post.errors.full_messages.each do |msg| %>
+					<li class="list-group-item list-group-item-danger"><%= msg %></li>
+				<% end %>
+				</ul>
+			<% end %>
 			<div class="form-group">
 				<div class="input-group input-group-lg">
 					<div class="input-group-addon">标题<%#= f.label :title, "标题" %></div>
