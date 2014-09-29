@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 	def create
 		@post = current_user.posts.build(permit_params)
 		if @post.save
+			flash[:success] = "文章发布成功！"
 			redirect_to @post
 		else
 			render 'new'
@@ -28,6 +29,7 @@ class PostsController < ApplicationController
 	def update
 		@post = Post.find(params[:id])
 		if @post.update(permit_params)
+			flash[:success] = "文章更新成功！"
 			redirect_to @post
 		else
 			render 'edit'
@@ -36,7 +38,8 @@ class PostsController < ApplicationController
 
 	def destroy
 		Post.find(params[:id]).destroy
-		redirect_to posts_url
+		flash[:success] = "文章删除成功！"
+		redirect_to current_user
 	end
 
 	private

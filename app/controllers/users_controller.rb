@@ -11,7 +11,8 @@ class UsersController < ApplicationController
 	def new
 		if signed_in?
 			@user = current_user
-			render 'show'
+			flash[:info] = "您已经登陆。如需注册新用户，请先登出。"
+			redirect_to @user
 		else
 			@user = User.new
 		end
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
 		@user = User.new(permit_params)
 		if @user.save
 			sign_in @user
+			flash[:success] = "欢迎加入FFBLOG！"
 			redirect_to user_url(@user)
 		else
 			render 'new'
@@ -32,6 +34,7 @@ class UsersController < ApplicationController
 
 	def update
 		if current_user.update(user_update_params)
+			flash[:success] = "资料更新成功！"
 			redirect_to current_user
 		else
 			render 'edit'

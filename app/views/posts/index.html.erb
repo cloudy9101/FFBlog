@@ -6,7 +6,10 @@
 			<% @posts.each do |post| %>
 				<li class="list-group-item">
 					<h3><%= link_to post.title, post_path(post) %></h3>
-					<p><span class="glyphicon glyphicon-user"></span> <%= link_to post.user.name, user_path(post.user) %> 发布于 <%= time_tag post.updated_at %></p>
+					<p><span class="glyphicon glyphicon-user"></span> <%= link_to post.user.name, user_path(post.user) %> 发布于 <%= time_tag post.updated_at %> 
+					<% if post.user == current_user %>
+						<%= link_to '删除', post_path(post), method: :delete, data: { confirm: "确认删除？" } %>
+					<% end %></p>
 				</li>
 			<% end %>
 		</div>

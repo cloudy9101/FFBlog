@@ -6,6 +6,14 @@
 			<div class="panel-heading"><h2>编辑用户</h2></div>	
 			<div class="panel-body">
 				<%= form_for :current_user, url: user_path(current_user), method: :patch, html: { class: "form-horizontal", role: "form" } do |f| %>
+					<% if @current_user.errors.any? %>
+						<ul class="list-group">
+						<% @current_user.errors.full_messages.each do |msg| %>
+							<li class="list-group-item list-group-item-danger"><%= msg %></li>
+						<% end %>
+						</ul>
+					<% end %>
+
 					<div class="form-group">
 						<%= f.label :name, '用户名', class: "col-sm-3 control-label" %>
 						<div class="col-sm-8">
