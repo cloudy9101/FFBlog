@@ -5,7 +5,7 @@
 		<div class="row list-group">
 			<% if @users.any? %>
 				<% @users.each do |user| %>
-					<div class="col-md-4">
+					<div class="col-md-4 users-list">
 						<li class="list-group-item">
 							<div class="center">
 								<p><%= image_tag user.avatar.thumb %></p>
@@ -17,6 +17,7 @@
 						</li>
 					</div>
 				<% end %>
+				<%= will_paginate @users, renderer: BootstrapPagination::Rails %>
 			<% end %>
 		</div>
 		

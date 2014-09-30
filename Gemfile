@@ -48,4 +48,11 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'imagemagick-identify'
 
+# Faker   -- Add fake users
+gem 'faker'
+
+# paginate
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
+
 

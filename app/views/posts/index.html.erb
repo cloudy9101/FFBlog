@@ -12,6 +12,7 @@
 					<% end %></p>
 				</li>
 			<% end %>
+			<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 		</div>
 	</div>
 	<%= render 'layouts/sidebar' %>
