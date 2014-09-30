@@ -1,0 +1,19 @@
+<% provide(:title, "搜索结果") %>
+<div class="row">
+	<div class="col-md-8">
+		<% if @results.any? %>
+			<div class="list-group">
+				<% @results.each do |result| %>
+					<div class="list-group-item">
+						<h4><%= link_to result.title, result %></h4>
+						<p><span class="glyphicon glyphicon-user"></span><%= link_to result.user.name, result.user %> 发布于 <%= time_tag result.updated_at %></p>
+					</div>
+				<% end %>
+				<%= will_paginate @results, renderer: BootstrapPagination::Rails %>
+			</div>
+		<% else %>
+			<h3>对不起，暂时没有您要找的内容。</h3>
+		<% end %>
+	</div>
+	<%= render 'layouts/sidebar' %>
+</div>

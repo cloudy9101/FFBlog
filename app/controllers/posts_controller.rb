@@ -42,6 +42,10 @@ class PostsController < ApplicationController
 		redirect_to current_user
 	end
 
+	def search_result
+		@results = Post.search(params[:q], page: params[:page], per_page: 10)
+	end
+
 	private
 		def permit_params
 			params.require(:post).permit(:title, :text)

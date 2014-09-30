@@ -55,4 +55,7 @@ gem 'faker'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 
+# search engine
+gem 'searchkick'
+
 
