@@ -15,6 +15,13 @@
 					<% end %>
 
 					<div class="form-group">
+						<p class="center"><%= image_tag(current_user.avatar_url) if current_user.avatar? %></p>
+						<%= f.label :avatar, "上传头像", class: "col-sm-4 control-label" %>
+						<%= f.file_field :avatar, class: "col-sm-8" %>
+						<%= f.hidden_field :avatar_cache %>
+					</div>
+
+					<div class="form-group">
 						<%= f.label :name, '用户名', class: "col-sm-3 control-label" %>
 						<div class="col-sm-8">
 							<%= f.text_field :name, class: "form-control" %>

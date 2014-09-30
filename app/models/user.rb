@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	mount_uploader :avatar, AvatarUploader
 	has_many :posts, dependent: :destroy
 	has_many :comments, dependent: :destroy
 	has_secure_password

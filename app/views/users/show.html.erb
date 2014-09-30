@@ -2,8 +2,8 @@
 <% flash.each do |name, msg| %>
 	<div class="alert alert-<%= name %>"><%= msg %></div>
 <% end %>
-<h3>文章列表</h3>
 <div class="row">
+	<h3>文章列表</h3>
 	<div class="col-md-8">
 		<% if @user.posts.any? %>
 			<ul class="list-group">
@@ -19,16 +19,5 @@
 			</ul>
 		<% end %>
 	</div>
-	<div class="col-md-4">
-		<div class="panel panel-info">
-			<div class="panel-heading">会员信息</div>
-			<div class="panel-body center">
-				<h1><%= @user.name %></h1>
-				<h3><%= @user.email %></h3>
-				<br>
-				<h4><%= link_to '撰写新文章', new_post_path %></h4>
-			</div>
-		</div>
-	</div>
-
+	<%= render 'layouts/sidebar' %>
 </div>

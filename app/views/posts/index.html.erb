@@ -14,20 +14,5 @@
 			<% end %>
 		</div>
 	</div>
-	<div class="col-md-4">
-		<div class="panel panel-info">
-			<div class="panel-heading">会员信息</div>
-			<div class="panel-body center">
-				<% if signed_in? %>
-					<h1><%= current_user.name %></h1>
-					<h3><%= current_user.email %></h3>
-					<br>
-					<h4><%= link_to '撰写新文章', new_post_path %></h4>
-				<% else %>
-					<p><span class="glyphicon glyphicon-user"></span></p>
-					<h4><%= link_to '登陆', signin_path %> | <%= link_to '注册', signup_path %></h4>
-				<% end %>
-			</div>
-		</div>
-	</div>
+	<%= render 'layouts/sidebar' %>
 </div>

@@ -7,10 +7,13 @@
 				<% @users.each do |user| %>
 					<div class="col-md-4">
 						<li class="list-group-item">
-							<h4 class="center"><span class="glyphicon glyphicon-user"></span> <%= link_to user.name ,user_path(user) %></h4>
-							<p>Email: <%= user.email %></p>
-							<p>发表文章 <%= link_to user.posts.count, user_path(user) %> 篇</p>
-							<small>用户创建于 <%= time_tag user.updated_at %></small>
+							<div class="center">
+								<p><%= image_tag user.avatar.thumb %></p>
+								<h3><%= link_to user.name ,user_path(user) %></h3>
+								<p>Email: <%= user.email %></p>
+								<p>发表文章 <%= link_to user.posts.count, user_path(user) %> 篇</p>
+								<small>用户创建于 <%= time_tag user.updated_at %></small>
+							</div>
 						</li>
 					</div>
 				<% end %>
@@ -18,21 +21,6 @@
 		</div>
 		
 	</div>
-	<div class="col-md-4">
-		<div class="panel panel-info">
-			<div class="panel-heading">会员信息</div>
-			<div class="panel-body center">
-				<% if signed_in? %>
-					<h1><%= current_user.name %></h1>
-					<h3><%= current_user.email %></h3>
-					<br>
-					<h4><%= link_to '撰写新文章', new_post_path %></h4>
-				<% else %>
-					<p><span class="glyphicon glyphicon-user"></span></p>
-					<h4><%= link_to '登陆', signin_path %> | <%= link_to '注册', signup_path %></h4>
-				<% end %>
-			</div>
-		</div>
-	</div>
+	<%= render 'layouts/sidebar' %>
 </div>
 
