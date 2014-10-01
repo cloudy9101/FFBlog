@@ -2,17 +2,31 @@
 
 <div class="row">
 	<div class="col-md-8">
-		<div class="jumbotron">
-			<h1>欢迎来到FFBLOG！</h1>
-			<p>这是一个基于RubyOnRails技术的博客系统。属于我个人的一次练习，非常简陋，敬请包涵。</p>
-			<p><%= link_to '注册新用户',  signup_path, class: "btn btn-primary btn-lg" %></p>
+		<div class="list-group">
+			<% @posts.each do |post| %>
+				<div class="list-group-item">
+					<div class="row">
+						<div class="col-md-1"><a href=<%= user_path(post.user) %>><%= image_tag post.user.avatar.thumb %></a></div>
+						<div class="col-md-11">
+							<p><%= link_to post.user.name, user_path(post.user) %> 发表博文：</p>
+							<p><%= link_to post.title, post_path(post) %></p>
+						</div>
+					</div>
+				</div>
+			<% end %>
 		</div>
 	</div>
-	<div class="col-md-4">
-		<div class="jumbotron center">
-			<h3>已有账户？</h3>
-			<br>
-			<p><%= link_to '登陆', signin_path, class: "btn btn-primary btn-lg" %></p>
+	<% if signed_in? %>
+		<%= render 'layouts/sidebar' %>
+	<% else %>
+		<div class="col-md-4">
+			<div class="jumbotron">
+				<h4>欢迎来到FFBLOG！</h4>
+				<p><small>这是一个基于RubyOnRails技术的博客系统。属于我个人的一次练习，非常简陋，敬请包涵。</small></p>
+				<p><%= link_to '注册新用户',  signup_path, class: "btn btn-primary" %></p>
+				<p><small>  已有账号？请<%= link_to '登陆', signin_path %></small></p>
+				
+			</div>
 		</div>
-	</div>
+	<% end %>
 </div>

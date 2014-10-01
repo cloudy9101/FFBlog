@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 	before_action :require_login , only: [:create, :destroy]
 	def index
-		@posts = Post.paginate(:page => params[:page], :per_page => 10 )
+		@posts = Post.order('updated_at desc').paginate(:page => params[:page], :per_page => 10 )
 	end
 
 	def show
