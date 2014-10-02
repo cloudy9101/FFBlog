@@ -1,12 +1,22 @@
 <div class="col-md-4">
-	<div class="panel panel-info">
-		<div class="panel-heading">会员信息</div>
-		<div class="panel-body center">
-			<%= image_tag current_user.avatar_url %>
-			<h1><%= current_user.name %></h1>
-			<h4>Email: <%= current_user.email %></h4>
-			<br>
-			<h4><%= link_to '撰写新文章', new_post_path %></h4>
+	<% if signed_in? %>
+		<div class="panel panel-info">
+			<div class="panel-heading">会员信息</div>
+			<div class="panel-body center">
+				<%= image_tag current_user.avatar_url %>
+				<h1><%= current_user.name %></h1>
+				<h4>Email: <%= current_user.email %></h4>
+				<br>
+				<h4><%= link_to '撰写新文章', new_post_path %></h4>
+			</div>
 		</div>
-	</div>
+	<% else %>
+		<div class="panel panel-info">
+			<div class="panel-heading">欢迎您，游客</div>
+			<div class="panel-body center">
+				<h3>您还可以</h3>
+				<h4><%= link_to '注册', signup_path %> | <%= link_to '登陆', signin_path %></h4>
+			</div>
+		</div>
+	<% end %>
 </div>

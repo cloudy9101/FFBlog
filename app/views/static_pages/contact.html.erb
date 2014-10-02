@@ -1,2 +1,12 @@
-<h1>StaticPages#contact</h1>
-<p>Find me in app/views/static_pages/contact.html.erb</p>
+<% provide(:title, '联系我') %>
+
+<div class="row">
+	<div class="col-md-8 center">
+		<h1>联系我</h1>
+		<%= image_tag 'admin.jpg' %>
+		<h4>我的邮箱: cloudy9101@126.com</h4>
+		<h4>我在<%= link_to 'Github', 'https://github.com/cloudy9101' %>上</h4>
+	</div>
+
+	<%= render 'layouts/sidebar' %>
+</div>

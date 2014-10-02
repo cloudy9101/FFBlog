@@ -1,2 +1,20 @@
-<h1>StaticPages#about</h1>
-<p>Find me in app/views/static_pages/about.html.erb</p>
+<% provide(:title, '关于') %>
+<div class="row">
+	<div class="col-md-8">
+		<div class="center"><h1>关于</h1></div>
+		<p>这是一个多人博客，基于RubyOnRails技术，是我个人的一次练习之作。</p>
+		<p>目前使用的Gems除Rails默认的以外，还包括</p>
+		<ul>
+			<li>bootstrap-sass， 用于前端</li>
+			<li>carrierwave，用于头像等图片上传和缩放</li>
+			<li>mini_magick，用于图片缩放，carrierwave要求</li>
+			<li>imagemagick-identify，同上</li>
+			<li>faker，用于填充示例用户和文章</li>
+			<li>will_paginate，用于分页</li>
+			<li>will_paginate-bootstrap，用于使分页表现为bootstrap样式</li>
+			<li>searchkick，用于搜索</li>
+		</ul>
+	</div>
+
+	<%= render 'layouts/sidebar' %>
+</div>
