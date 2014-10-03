@@ -58,4 +58,7 @@ gem 'will_paginate-bootstrap'
 # search engine
 gem 'searchkick'
 
+#ckeditor
+gem 'ckeditor'
+
 
